@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valeria Abanto | Assistente Comercial & Marketing</title>
+    
+    <!-- Google Fonts: Playfair Display & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* ==========================================================================
+           1. VARIÁVEIS E CONFIGURAÇÕES DO DESIGN.MD
+           ========================================================================== */
+        :root {
+            /* Cores */
+            --bg-primary: #000000;
+            --bg-surface: #0a0a0a;
+            --bg-card: #121212;
+            --color-offwhite: #F8F8F8;
+            --color-gold: #D4AF37;
+            --color-charcoal: #36454F;
+            --color-blush: #F0D5D5;
+            --color-beige: #F5F5DC;
+            --border-muted: rgba(212, 175, 55, 0.2);
+            --border-subtle: rgba(255, 255, 255, 0.08);
+
+            /* Tipografia */
+            --font-main: 'Playfair Display', serif;
+            --font-mono: 'JetBrains Mono', monospace;
+
+            /* Elevação & Bordas */
+            --radius-base: 12px;
+            --shadow-subtle: 0 2px 12px rgba(0, 0, 0, 0.5);
+            --transition-smooth: all 300ms cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Resets & Base */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--color-offwhite);
+            font-family: var(--font-main);
+            font-weight: 400;
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section-gap {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+        }
+
+        /* Tipografia Utilitária */
+        h1, h2, h3, h4 {
+            font-family: var(--font-main);
+            font-weight: 700;
+            color: var(--color-offwhite);
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--color-gold);
+        }
+
+        .text-gold { color: var(--color-gold); }
+        .text-muted { color: #a0a0a0; }
+        .label-caps {
+            font-family: var(--font-main);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-gold);
+        }
+
+        /* Componentes: Botões */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: var(--color-gold);
+            color: #000000;
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.75rem;
+            font-family: var(--font-main);
+            font-weight: 600;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover {
+            background-color: #c5a028;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: transparent;
+            color: var(--color-offwhite);
+            padding: 0.875rem 1.75rem;
+            border-radius: 0.75rem;
+            font-family: var(--font-main);
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1.5px solid var(--border-muted);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-gold);
+            background-color: rgba(212, 175, 55, 0.05);
+            color: var(--color-gold);
+        }
+
+        /* Card Component */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-base);
+            padding: 2rem;
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            border-color: var(--border-muted);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        /* ==========================================================================
+           2. HEADER & NAVEGAÇÃO
+           ========================================================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .brand-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            color: var(--color-offwhite);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .brand-logo span {
+            color: var(--color-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-size: 0.938rem;
+            font-weight: 500;
+            color: #a0a0a0;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--color-gold);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--color-offwhite);
+            cursor: pointer;
+        }
+
+        /* ==========================================================================
+           3. HERO SECTION (Split-screen)
+           ========================================================================== */
+        .hero-section {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .hero-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: #a0a0a0;
+        }
+
+        .hero-title span {
+            font-style: italic;
+            color: var(--color-gold);
+        }
+
+        .hero-subtitle {
+            font-size: 1.125rem;
+            color: #c0c0c0;
+            max-width: 60ch;
+            line-height: 1.7;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .visual-card {
+            width: 100%;
+            max-width: 380px;
+            aspect-ratio: 4/5;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-muted);
+            border-radius: var(--radius-base);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-subtle);
+        }
+
+        .visual-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(212,175,55,0.15) 0%, transparent 70%);
+        }
+
+        .badge-tag {
+            align-self: flex-start;
+            padding: 0.35rem 0.85rem;
+            border-radius: 50px;
+            background-color: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--border-muted);
+            color: var(--color-gold);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+
+        /* ==========================================================================
+           4. SOBRE MIM (Zig-zag)
+           ========================================================================== */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-highlight-box {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-subtle);
+            border-left: 3px solid var(--color-gold);
+            padding: 2.5rem;
+            border-radius: var(--radius-base);
+        }
+
+        /* ==========================================================================
+           5. EXPERIÊNCIAS PROFISSIONAIS (Timeline/Zig-zag)
+           ========================================================================== */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .experience-card {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 2rem;
+        }
+
+        .exp-header {
+            border-right: 1px solid var(--border-subtle);
+            padding-right: 1.5rem;
+        }
+
+        .exp-company {
+            font-size: 1.25rem;
+            color: var(--color-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .exp-date {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: #888;
+        }
+
+        .exp-bullets {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .exp-bullets li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: #d0d0d0;
+            font-size: 0.95rem;
+        }
+
+        .exp-bullets li::before {
+            content: "—";
+            position: absolute;
+            left: 0;
+            color: var(--color-gold);
+        }
+
+        /* ==========================================================================
+           6. COMPETÊNCIAS & HABILIDADES
+           ========================================================================== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .skill-icon-wrapper {
+            background-color: rgba(212, 175, 55, 0.08);
+            border: 1px solid var(--border-muted);
+            color: var(--color-gold);
+            padding: 0.75rem;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .skill-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .skill-info p {
+            font-size: 0.875rem;
+            color: #a0a0a0;
+        }
+
+        /* ==========================================================================
+           7. FORMAÇÃO ACADÊMICA & DESENVOLVIMENTO
+           ========================================================================== */
+        .academic-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .academic-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+        }
+
+        /* ==========================================================================
+           8. CONTATO & FOOTER
+           ========================================================================== */
+        .contact-card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-muted);
+            border-radius: var(--radius-base);
+            padding: 3.5rem 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-methods {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.875rem;
+            color: #777;
+            font-family: var(--font-mono);
+        }
+
+        /* ==========================================================================
+           9. RESPONSIVIDADE (Mobile Collapse < 768px)
+           ========================================================================== */
+        @media (max-width: 992px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-card {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .exp-header {
+                border-right: none;
+                border-bottom: 1px solid var(--border-subtle);
+                padding-right: 0;
+                padding-bottom: 0.75rem;
+            }
+
+            .academic-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-surface);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-methods {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVEGAÇÃO -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="brand-logo">
+                VALERIA <span>ABANTO</span>
+            </a>
+            
+            <button class="mobile-toggle" id="menuToggle" aria-label="Abrir Menu">
+                <i data-lucide="menu"></i>
+            </button>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                <li><a href="#experiencia" class="nav-link">Experiência</a></li>
+                <li><a href="#competencias" class="nav-link">Competências</a></li>
+                <li><a href="#formacao" class="nav-link">Formação</a></li>
+                <li><a href="#contato" class="nav-link">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION (Split-screen Layout) -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span class="label-caps">Assistente Comercial & E-commerce</span>
+                    <h1 class="hero-title">
+                        Estratégias de vendas e gestão operacional para <span>Moda & Retail</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Profissional com sólida experiência em e-commerce, gestão de cadastros em marketplace (Shopee), suporte comercial e criação de conteúdos estratégicos voltados ao fortalecimento de marcas.
+                    </p>
+                    
+                    <div class="hero-location">
+                        <i data-lucide="map-pin" style="width: 16px; height: 16px; color: var(--color-gold);"></i>
+                        <span>Vila Guilherme — São Paulo, SP</span>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#contato" class="btn-primary">
+                            <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                            Entrar em Contato
+                        </a>
+                        <a href="#experiencia" class="btn-secondary">
+                            <i data-lucide="briefcase" style="width: 18px; height: 18px;"></i>
+                            Ver Experiências
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="visual-card">
+                        <div>
+                            <span class="badge-tag">Foco Profissional</span>
+                            <h3 style="margin-top: 1.5rem; font-size: 1.5rem;">E-commerce & Marketing</h3>
+                            <p class="text-muted" style="font-size: 0.9rem; margin-top: 0.5rem;">
+                                Suporte a vendas, atendimento ao cliente e criação de vitrines digitais de alto impacto.
+                            </p>
+                        </div>
+                        
+                        <div style="border-top: 1px solid var(--border-subtle); padding-top: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                <span class="text-muted">Especialidade:</span>
+                                <span style="font-weight: 600;">Shopee & Redes Sociais</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; font-size: 0.85rem;">
+                                <span class="text-muted">Formação:</span>
+                                <span style="font-weight: 600;">Design Gráfico & Marketing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE MIM -->
+    <section id="sobre" class="section-gap" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="about-grid">
+                <div>
+                    <span class="label-caps">Resumo Profissional</span>
+                    <h2 style="margin-top: 0.5rem;">Visão Geral & Objetivos</h2>
+                    <p style="margin-bottom: 1rem; color: #d0d0d0;">
+                        Atuo no suporte contínuo às atividades comerciais, atendimento direto ao cliente, elaboração de títulos e descrições estratégicas para anúncios, e no acompanhamento minucioso de orçamentos e logística de envios.
+                    </p>
+                    <p style="color: #d0d0d0;">
+                        Com formação acadêmica combinada em Design Gráfico e Marketing, uno sensibilidade estética a processos operacionais do e-commerce, promovendo a organização de mercadorias, gestão de estoques e atração de clientes através de conteúdo visual em mídias sociais.
+                    </p>
+                </div>
+
+                <div class="about-highlight-box">
+                    <h3 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--color-gold);">
+                        <i data-lucide="target" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 8px;"></i>
+                        Objetivo Profissional
+                    </h3>
+                    <p style="font-size: 0.95rem; color: #c0c0c0;">
+                        Contribuir nas áreas Comercial, Marketing, Vendas ou E-commerce através do atendimento ao cliente, suporte estruturado às vendas, organização e cadastro de produtos, divulgação comercial e ações focadas no fortalecimento constante dos resultados da empresa.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIÊNCIA PROFISSIONAL -->
+    <section id="experiencia" class="section-gap">
+        <div class="container">
+            <span class="label-caps">Trajetória</span>
+            <h2>Experiência Profissional</h2>
+
+            <div class="experience-list">
+                <!-- VikModasAtacado -->
+                <div class="card experience-card">
+                    <div class="exp-header">
+                        <h3 class="exp-company">VikModasAtacado</h3>
+                        <p style="font-weight: 500; font-size: 0.95rem; color: #fff;">Assistente Comercial / E-commerce</p>
+                        <p class="exp-date">2025</p>
+                    </div>
+                    <div>
+                        <ul class="exp-bullets">
+                            <li>Cadastro e atualização de produtos na Shopee, elaborando títulos otimizados e descrições comerciais para anúncios.</li>
+                            <li>Atendimento direto ao cliente, elaboração de orçamentos e suporte no acompanhamento de pedidos.</li>
+                            <li>Organização de mercadorias em estoque e acompanhamento do fluxo operacional de logística e envios.</li>
+                            <li>Apoio às ações de divulgação de produtos e suporte integral às atividades comerciais.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Infinidy Style E-commerce -->
+                <div class="card experience-card">
+                    <div class="exp-header">
+                        <h3 class="exp-company">Infinidy Style</h3>
+                        <p style="font-weight: 500; font-size: 0.95rem; color: #fff;">E-commerce & Marketing</p>
+                        <p class="exp-date">Experiência Recente</p>
+                    </div>
+                    <div>
+                        <ul class="exp-bullets">
+                            <li>Cadastro e gerenciamento completo de anúncios na plataforma Shopee com atualização de dados técnicos.</li>
+                            <li>Atendimento ao cliente, esclarecimento de dúvidas pontuais e apoio à rotina de preparação e envio de pedidos.</li>
+                            <li>Criação de títulos atraentes, descrições informativas e conteúdos gráficos para divulgação comercial de produtos.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- KidsBeHappy E-commerce -->
+                <div class="card experience-card">
+                    <div class="exp-header">
+                        <h3 class="exp-company">KidsBeHappy</h3>
+                        <p style="font-weight: 500; font-size: 0.95rem; color: #fff;">Suporte E-commerce</p>
+                        <p class="exp-date">2023</p>
+                    </div>
+                    <div>
+                        <ul class="exp-bullets">
+                            <li>Cadastro metódico de novos produtos e manutenção preventiva de anúncios na Shopee.</li>
+                            <li>Atendimento receptivo ao cliente e suporte orientativo durante toda a jornada de compra.</li>
+                            <li>Apoio direto à triagem e organização de pedidos na rotina operacional diária do e-commerce.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPETÊNCIAS -->
+    <section id="competencias" class="section-gap" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <span class="label-caps">Habilidades</span>
+            <h2>Competências Técnicas & Comportamentais</h2>
+
+            <div class="skills-grid">
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="shopping-bag" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>E-commerce & Marketplace</h4>
+                        <p>Gestão e cadastro de produtos na Shopee, anúncios e descrições técnicas comerciais.</p>
+                    </div>
+                </div>
+
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="headphones" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Atendimento & Vendas</h4>
+                        <p>Atendimento ao cliente, pós-venda, orçamentos e acompanhamento de pedidos.</p>
+                    </div>
+                </div>
+
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="palette" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Criação de Conteúdo</h4>
+                        <p>Uso de Canva para criação de posts, stories e vídeos básicos para Instagram e TikTok.</p>
+                    </div>
+                </div>
+
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="box" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Estoque & Logística</h4>
+                        <p>Organização de mercadorias, conferência de estoque e rotina de despacho de envios.</p>
+                    </div>
+                </div>
+
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="file-spreadsheet" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Excel Básico</h4>
+                        <p>Elaboração de planilhas operacionais, aplicação de filtros e fórmulas simples.</p>
+                    </div>
+                </div>
+
+                <div class="card skill-item">
+                    <div class="skill-icon-wrapper">
+                        <i data-lucide="user-check" style="width: 22px; height: 22px;"></i>
+                    </div>
+                    <div class="skill-info">
+                        <h4>Atitudes-Chave</h4>
+                        <p>Comunicação clara, excelente organização, proatividade e alta facilidade de aprendizagem.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMAÇÃO & DESENVOLVIMENTO -->
+    <section id="formacao" class="section-gap">
+        <div class="container">
+            <span class="label-caps">Qualificação</span>
+            <h2>Formação & Aperfeiçoamento</h2>
+
+            <div class="academic-grid">
+                <div class="card academic-card">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--color-gold);">
+                        <i data-lucide="graduation-cap" style="width: 24px; height: 24px;"></i>
+                        <h3 style="font-size: 1.25rem;">Formação Acadêmica</h3>
+                    </div>
+                    
+                    <div style="margin-top: 1rem; border-left: 2px solid var(--border-muted); padding-left: 1rem;">
+                        <h4 style="font-size: 1.05rem;">Tecnólogo em Design Gráfico</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Concluído em 2024</p>
+                    </div>
+
+                    <div style="border-left: 2px solid var(--border-muted); padding-left: 1rem; margin-top: 0.5rem;">
+                        <h4 style="font-size: 1.05rem;">Curso Técnico em Marketing</h4>
+                        <p class="text-muted" style="font-size: 0.875rem;">Concluído</p>
+                    </div>
+                </div>
+
+                <div class="card academic-card">
+                    <div style="display: flex; align-items: center; gap: 0.75rem; color: var(--color-gold);">
+                        <i data-lucide="trending-up" style="width: 24px; height: 24px;"></i>
+                        <h3 style="font-size: 1.25rem;">Desenvolvimento Profissional</h3>
+                    </div>
+
+                    <p style="color: #c0c0c0; font-size: 0.95rem; margin-top: 0.5rem;">
+                        Em constante atualização teórica e prática para aprimoramento de competências ligadas a:
+                    </p>
+
+                    <ul class="exp-bullets" style="margin-top: 0.5rem;">
+                        <li>Estratégias de vendas e gestão comercial.</li>
+                        <li>Análise de resultados no e-commerce.</li>
+                        <li>Planejamento de conteúdo e posicionamento de marca.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE CONTATO -->
+    <section id="contato" class="section-gap" style="background-color: var(--bg-surface);">
+        <div class="container">
+            <div class="contact-card">
+                <span class="label-caps">Oportunidades & Conexões</span>
+                <h2 style="margin-top: 0.5rem; margin-bottom: 1rem;">Vamos Trabalhar Juntos?</h2>
+                <p class="text-muted" style="max-width: 50ch; margin: 0 auto;">
+                    Estou disponível para novas oportunidades nas áreas Comercial, Marketing, Vendas ou E-commerce em São Paulo e região.
+                </p>
+
+                <div class="contact-methods">
+                    <a href="tel:11946798495" class="btn-primary">
+                        <i data-lucide="phone" style="width: 18px; height: 18px;"></i>
+                        (11) 94679-8495
+                    </a>
+                    
+                    <a href="mailto:vabanto11@gmail.com" class="btn-secondary">
+                        <i data-lucide="mail" style="width: 18px; height: 18px;"></i>
+                        vabanto11@gmail.com
+                    </a>
+                </div>
+
+                <p class="text-muted" style="font-size: 0.85rem; margin-top: 2rem;">
+                    <i data-lucide="map-pin" style="width: 14px; height: 14px; vertical-align: middle;"></i> Vila Guilherme — São Paulo, SP
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 Valeria Abanto Ballena. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT DE INTERATIVIDADE -->
+    <script>
+        // Inicializar os ícones do Lucide
+        lucide.createIcons();
+
+        // Menu Mobile Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Fechar menu mobile ao clicar em um link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll e Ativação do Menu conforme Scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            const scrollPosition = window.scrollY + 200;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
